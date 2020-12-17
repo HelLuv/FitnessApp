@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fitness.BL", "Fitness.BL\Fitness.BL.csproj", "{BA611F93-D870-42AF-BE2A-B84D23930BF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fitness.BL", "Fitness.BL\Fitness.BL.csproj", "{BA611F93-D870-42AF-BE2A-B84D23930BF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fitness.CMD", "Fitness.CMD\Fitness.CMD.csproj", "{15229C25-36F5-47EE-BF15-B4EC25E38762}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fitness.CMD", "Fitness.CMD\Fitness.CMD.csproj", "{15229C25-36F5-47EE-BF15-B4EC25E38762}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fitness.BLTests", "Fitness.BLTests\Fitness.BLTests.csproj", "{05D9F512-C5D1-4AED-86E0-04E0ED322B55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{15229C25-36F5-47EE-BF15-B4EC25E38762}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15229C25-36F5-47EE-BF15-B4EC25E38762}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15229C25-36F5-47EE-BF15-B4EC25E38762}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05D9F512-C5D1-4AED-86E0-04E0ED322B55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05D9F512-C5D1-4AED-86E0-04E0ED322B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05D9F512-C5D1-4AED-86E0-04E0ED322B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05D9F512-C5D1-4AED-86E0-04E0ED322B55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
