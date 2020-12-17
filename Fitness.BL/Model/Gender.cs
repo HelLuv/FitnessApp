@@ -2,6 +2,7 @@
 
 namespace Fitness.BL.Model
 {
+    [Serializable]
     /// <summary>
     /// Пол
     /// </summary>
@@ -10,7 +11,10 @@ namespace Fitness.BL.Model
         /// <summary>
         /// Название
         /// </summary>
-        public string Name { get; }
+        public string Name { get; set; }
+
+        public Gender() { }
+        
         /// <summary>
         /// Создать новый пол
         /// </summary>
@@ -19,7 +23,7 @@ namespace Fitness.BL.Model
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("Имя пола не может быть пусты или null.", nameof(name));
+                throw new ArgumentNullException("Имя пола не может быть пустым или null", nameof(name));
             }
 
             Name = name;

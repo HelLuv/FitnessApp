@@ -2,10 +2,11 @@
 
 namespace Fitness.BL.Model
 {
+    [Serializable]
     /// <summary>
     /// Пользователь
     /// </summary>
-    class User
+    public class User
     {
         #region Свойства
         /// <summary>
@@ -16,12 +17,12 @@ namespace Fitness.BL.Model
         /// <summary>
         /// Пол
         /// </summary>
-        public Gender Gender { get; }
+        public Gender Gender { get; set; }
 
         /// <summary>
         /// Дата рождения
         /// </summary>
-        public DateTime BirthDate { get; }
+        public DateTime BirthDate { get; set; } = DateTime.Now;
 
         /// <summary>
         /// Вес
@@ -32,6 +33,8 @@ namespace Fitness.BL.Model
         /// Рост
         /// </summary>
         public double Height { get; set; }
+
+        public int Age { get { return DateTime.Now.Year - BirthDate.Year; } }
         #endregion
 
         /// <summary>
@@ -42,12 +45,16 @@ namespace Fitness.BL.Model
         /// <param name="birthDate"> Дата рождения. </param>
         /// <param name="weight"> Вес. </param>
         /// <param name="height"> Рост.</param>
-        public User(string name, Gender gender, DateTime birthDate, double weight, double height)
+        public User(string name,
+                    Gender gender,
+                    DateTime birthDate,
+                    double weight,
+                    double height)
         {
-            #region Проверка данных
+            #region Проверка условий
             if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("Имя пользователя не может быть пустым или null.", nameof(name));
+                throw new ArgumentNullException("Имя пользователя не может быть пустым или null", nameof(name));
             }
 
             if (gender == null)
@@ -55,7 +62,7 @@ namespace Fitness.BL.Model
                 throw new ArgumentNullException("Пол не может быть null.", nameof(gender));
             }
 
-            if (birthDate < DateTime.Parse("01.01.1930") || birthDate >= DateTime.Now)
+            if (birthDate < DateTime.Parse("01.01.1900") || birthDate >= DateTime.Now)
             {
                 throw new ArgumentException("Невозможная дата рождения.", nameof(birthDate));
             }
@@ -65,7 +72,7 @@ namespace Fitness.BL.Model
                 throw new ArgumentException("Вес не может быть меньше либо равен нулю.", nameof(weight));
             }
 
-            if (height <= 10)
+            if (height <= 0)
             {
                 throw new ArgumentException("Рост не может быть меньше либо равен нулю.", nameof(height));
             }
@@ -77,9 +84,21 @@ namespace Fitness.BL.Model
             Weight = weight;
             Height = height;
         }
+        public User() { }
+
+        public User(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException("Имя пользователя не может быть пустым или null", nameof(name));
+            }
+
+            Name = name;
+        }
 
         public override string ToString()
         {
-            return Name;        }
+            return Name + " " + Age;
+        }
     }
 }
