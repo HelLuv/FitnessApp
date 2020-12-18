@@ -1,4 +1,5 @@
 ﻿using Fitness.BL.Controller;
+using Fitness.BL.Model;
 using System;
 
 namespace Fitness.CMD
@@ -8,10 +9,12 @@ namespace Fitness.CMD
         static void Main(string[] args)
         {
             Console.WriteLine("Вас приветствует приложение Fitness NH");
-            Console.WriteLine("Введите имя пользователя:");
+            Console.Write("Введите имя пользователя: ");
             var name = Console.ReadLine();
 
             var userController = new UserController(name);
+            var eatingController = new EatingController(userController.CurrentUser);
+
             if (userController.IsNewUser)
             {
                 Console.Write("Введите пол: ");
@@ -23,6 +26,39 @@ namespace Fitness.CMD
                 userController.SetNewUserData(gender, birthDate, weight, height);
             }
             Console.WriteLine(userController.CurrentUser);
+
+            Console.Write("E - ввести прием пищи: ");
+            var key = Console.ReadKey();
+            Console.WriteLine();
+
+            if (key.Key == ConsoleKey.E)
+            {
+                var foods = EnterEating();
+                eatingController.Add(foods.Food, foods.Weight);
+
+                Console.WriteLine();
+                foreach (var item in eatingController.Eating.Foods)
+                {
+                    Console.WriteLine($"\t{item.Key} - {item.Value}");
+                }
+            }
+        }
+
+        private static (Food Food, double Weight) EnterEating()
+        {
+            Console.Write("Введите имя продукта: ");
+            var foodName = Console.ReadLine();
+            
+            var calories = ParseDouble("калорийность");
+            var proteins = ParseDouble("белки");
+            var fats = ParseDouble("жиры");
+            var carbohydrates = ParseDouble("углеводы");
+            var weight = ParseDouble("вес порции");
+
+
+            var product = new Food(foodName, proteins, fats, carbohydrates, calories);
+
+            return (product, weight);
         }
 
         private static DateTime ParseBirthDate()
@@ -54,7 +90,7 @@ namespace Fitness.CMD
                 }
                 else
                 {
-                    Console.WriteLine($"Неверный формат {name}а.");
+                    Console.WriteLine($"Неверный формат {name}.");
                 }
             }
         }
