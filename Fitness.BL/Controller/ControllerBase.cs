@@ -1,12 +1,10 @@
-﻿using Fitness.BL.Controller;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
 
 namespace Fitness.BL.Controller
 {
     public abstract class ControllerBase : IDataSaver
     {
-        private readonly IDataSaver manager = new SerializableSaver();
+        private readonly IDataSaver manager = new DatabaseSaver();
 
         protected void Save<T>(List<T> item) where T : class
         {
@@ -30,4 +28,3 @@ namespace Fitness.BL.Controller
     }
 }
 
-    

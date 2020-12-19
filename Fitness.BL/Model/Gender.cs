@@ -8,6 +8,7 @@ namespace Fitness.BL.Model
     /// </summary>
     public class Gender
     {
+        public int Id { get; set; }
         /// <summary>
         /// Название
         /// </summary>

@@ -9,6 +9,7 @@ namespace Fitness.BL.Model
     public class User
     {
         #region Свойства
+        public int Id { get; set; }
         /// <summary>
         /// Имя
         /// </summary>
