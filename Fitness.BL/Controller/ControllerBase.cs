@@ -4,7 +4,7 @@ namespace Fitness.BL.Controller
 {
     public abstract class ControllerBase : IDataSaver
     {
-        private readonly IDataSaver manager = new DatabaseSaver();
+        private readonly IDataSaver manager = new SerializableSaver();
 
         protected void Save<T>(List<T> item) where T : class
         {
